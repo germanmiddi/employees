@@ -8,17 +8,37 @@
         <content > 
             <HBox alignItems="Center">
                 <Label id="labelEmployee" labelFor="inputEmployee" text="{i18n>labelEmployee}" class="sapUiSmallMargin" />
-                <Input id="inputEmployee" maxLength="6" width="200px" class="sapUiSmallMarginEnd"
+                <Input id="inputEmployee" value="{/EmployeeId}" maxLength="6" width="200px" class="sapUiSmallMarginEnd"
                         liveChange="onValidate" />
                 <Label id="labelCountry" labelFor="slCountry" text="{i18n>labelCountry}" class="sapUiSmallMargin" visible="false"/>
-                <Select id="slCountry" forceSelection="false" visible="false">
+                <Select id="slCountry" selectedKey="{/countryKey}" forceSelection="false" items="{/ListCountry}" visible="false">
                     <items>
-                        <core:Item key="US" text="{i18n>countryUS}" />
-                        <core:Item key="UK" text="{i18n>countryUK}" />
-                        <core:Item key="ES" text="{i18n>countryES}" />
+                        <core:Item key="{Key}" text="{Text}" />
                     </items>
                 </Select>
-                        
+            </HBox>
+
+            <HBox >
+                <Panel >
+                    <Table id="tableEmployee" items="{/Employees}">
+                        <columns>
+                            <Column><header><Label text="{i18n>tableId}"></Label></header></Column>
+                            <Column><header><Label text="{i18n>tableName}"></Label></header></Column>
+                            <Column><header><Label text="{i18n>tableCountry}"></Label></header></Column>
+                            <Column><header><Label text="{i18n>tableCity}"></Label></header></Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem >
+                                <cells>
+                                    <Label text="{EmployeeID}" />
+                                    <Label text="{LastName}, {FirstName}" />
+                                    <Label text="{Country}" />
+                                    <Label text="{City}" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </Panel>
             </HBox>
         </content>
     </Page>
