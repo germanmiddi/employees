@@ -8,14 +8,16 @@
         <content > 
             <HBox alignItems="Center">
                 <Label id="labelEmployee" labelFor="inputEmployee" text="{i18n>labelEmployee}" class="sapUiSmallMargin" />
-                <Input id="inputEmployee" value="{/EmployeeId}" maxLength="6" width="200px" class="sapUiSmallMarginEnd"
-                        liveChange="onValidate" />
-                <Label id="labelCountry" labelFor="slCountry" text="{i18n>labelCountry}" class="sapUiSmallMargin" visible="false"/>
-                <Select id="slCountry" selectedKey="{/countryKey}" forceSelection="false" items="{/ListCountry}" visible="false">
+                <Input id="inputEmployee" value="{/EmployeeId}" maxLength="6" width="200px" class="sapUiSmallMarginEnd"/>
+                <Label id="labelCountry" labelFor="slCountry" text="{i18n>labelCountry}" class="sapUiSmallMargin" />
+                <Select id="slCountry" selectedKey="{/countryKey}" forceSelection="false" items="{/ListCountry}"  >
                     <items>
                         <core:Item key="{Key}" text="{Text}" />
                     </items>
                 </Select>
+                <Button id="btnFilter" text="{i18n>btnFilter}" icon="sap-icon://search" press="onFilter" class="sapUiSmallMarginEnd"/>
+                <Button id="btnClearFilter" text="{i18n>btnClearFilter}" icon="sap-icon://clear-filter" press="onClearFilter" class="sapUiSmallMarginEnd"/>
+                
             </HBox>
 
             <HBox >
@@ -28,7 +30,8 @@
                             <Column><header><Label text="{i18n>tableCity}"></Label></header></Column>
                         </columns>
                         <items>
-                            <ColumnListItem >
+                            <ColumnListItem type="Active" press="showPostalCode" >
+
                                 <cells>
                                     <Label text="{EmployeeID}" />
                                     <Label text="{LastName}, {FirstName}" />
