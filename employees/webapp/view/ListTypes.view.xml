@@ -10,11 +10,74 @@
         <content >
             <IconTabBar>
                 <items>
-                    <IconTabFilter text="{i18n>objectList}" />
-                    <IconTabFilter text="{i18n>standardList}" />
-                    <IconTabFilter text="{i18n>inputList}" />
-                    <IconTabFilter text="{i18n>notificationList}" />
-                    <IconTabFilter text="{i18n>customList}" />
+                    <IconTabFilter text="{i18n>objectList}">
+                        <List items="{/Products}">
+                            <items>
+                                <ObjectListItem title="{Material} {Brand} {Model}"
+                                                number="{Price}"
+                                                numberUnit="{Currency}">
+                                    <ObjectAttribute text="{Brand}" />
+                                    <ObjectAttribute text="{Weight}" />
+                                </ObjectListItem>
+                            </items>
+                        
+                        </List>
+                    </IconTabFilter>
+                    <IconTabFilter text="{i18n>standardList}"> 
+                        <List items="{/Products}">
+                            <items>
+                                <StandardListItem title="{Mterial} {Brand} {Model}"
+                                                  description="{Weight}"
+                                                  info="{Price} {Currency}"
+                                                  type="Active" />
+                            </items>
+                        
+                        </List>
+                    </IconTabFilter>
+                    <IconTabFilter text="{i18n>inputList}">
+                        <List items="{/Products}">
+                            <items>
+                                <InputListItem label="{Brand}">
+                                    <Select items="{Properties}">
+                                        <core:Item key="{Id}" text="{Text}" />
+                                    </Select>
+                                
+                                </InputListItem>
+                            </items>
+                        </List>
+                    </IconTabFilter>
+
+                    <IconTabFilter text="{i18n>notificationList}">
+                        <List items="{/News}">
+                            <items>
+                                <NotificationListItem title="{Title}"
+                                                      description="{Description}"
+                                                      unread="{Unread}"
+                                                      authorName="{Author}" 
+                                                      priority="{Priority}"
+                                                      showCloseButton="{ShowCloseButton}" >
+                                
+                                </NotificationListItem>
+                            </items>
+                        </List>
+                    </IconTabFilter>
+                    <IconTabFilter text="{i18n>customList}" >
+                        <List items="{/News}">
+                            <items>
+                                <CustomListItem >
+                                    <layout:Grid defaultSpan="XL3 L3 M6 S12">
+                                        <Text text="{Title}"/>
+                                        <Text text="{Author}"/>
+                                        <Text text="{Description}"/>
+                                    </layout:Grid>
+                                </CustomListItem>
+                            </items>
+                        
+                        
+                        </List>
+
+                    
+                    </IconTabFilter>
                 </items>
 
             </IconTabBar>
